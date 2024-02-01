@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
+import {useNavigate} from 'react-router-dom'; // Importa el hook useHistory para la navegación
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 const VozCommands = () => {
     const [message, setMessage] = useState('');
+    const navigate = useNavigate(); // Obtiene el objeto de historial de navegación
+
     const commands = [
         {
             command: 'página arriba',
@@ -20,7 +23,19 @@ const VozCommands = () => {
             command: 'ir inferior',
             callback: () => window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})
         },
-    ]
+        {
+            command: 'ir a información',
+            callback: () => navigate('/Info')
+        },
+        {
+            command: 'ir a comentarios',
+            callback: () => navigate('/Coments') 
+        },
+        {
+            command: 'ir a principal',
+            callback: () => navigate('/Home') 
+        }
+    ];
 
     const { transcript, browserSupportsSpeechRecognition } = useSpeechRecognition({ commands });
     console.log(transcript)
@@ -38,6 +53,5 @@ const VozCommands = () => {
         </div>
     );
 };
-
 
 export default VozCommands;
