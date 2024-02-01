@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 function TopBar() {
         return (
             <div>
-            {/*Fixed hace que la barra se quede siempre msotrandose arriba, static la deja fija y si desplazas no la ves */}
             <AppBar position='fixed'>
                 <Container>
                     <Toolbar>
