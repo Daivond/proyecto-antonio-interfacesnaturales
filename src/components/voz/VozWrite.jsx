@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 function VozWrite() {
-    const [comment, setComment] = useState('');
+    const [comments, setComments] = useState([]);
 
     const handleSpeechRecognition = () => {
         const recognition = new window.webkitSpeechRecognition();
@@ -9,7 +9,7 @@ function VozWrite() {
         recognition.onresult = (event) => {
             const current = event.resultIndex;
             const transcript = event.results[current][0].transcript;
-            setComment(transcript);
+            setComments([...comments, transcript]);
         };
 
         recognition.start(); 
@@ -18,15 +18,22 @@ function VozWrite() {
     return (
         <div>
             <button onClick={handleSpeechRecognition}>Escribir comentario por voz</button>
-            <textarea
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                placeholder="Escribe tu comentario aquí"
-                rows={20}
-                style={{ width: '100%' }}
-            />
+            <div>
+                {comments.map((comment, index) => (
+                    <div key={index} style={commentStyle}>
+                        {comment}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
+
+const commentStyle = {
+    border: '1px solid #ccc',
+    borderRadius: '5px',
+    padding: '10px',
+    marginBottom: '5px'
+};
 
 export default VozWrite;
