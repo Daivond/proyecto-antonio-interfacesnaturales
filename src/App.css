@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes borderAnimation {
+  0% {
+    border-color: red;
+  }
+  50% {
+    border-color: blue;
+  }
+  100% {
+    border-color: red;
+  }
+}
+
+.borderAnimation {
+  animation: borderAnimation 20s linear infinite;
+}
+.container {
+  margin-left: 20px; /* Define el margen a la izquierda */
+}
+
+.content {
+  max-width: 800px; /* Opcional: limita el ancho del contenido */
+  margin: 0 auto; /* Opcional: centrar el contenido en la página */
+}
