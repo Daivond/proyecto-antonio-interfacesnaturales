@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom'; // Importa el hook useHistory para la navegación
+import {useNavigate} from 'react-router-dom';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 const VozCommands = () => {
     const [message, setMessage] = useState('');
-    const navigate = useNavigate(); // Obtiene el objeto de historial de navegación
-
+    const navigate = useNavigate();
     const commands = [
         {
             command: 'página arriba',
